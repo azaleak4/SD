@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neo SynthX - Smart Attendance</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+      :root {
+        --main-color: #8eb1e2;
+        --black: #222;
+        --white: #ffffff;
+        --light-black: rgb(226, 175, 222);
+        --light-white: #f7fbff;
+        --light-bg: #dfe6eb;
+        --border: 0.1rem solid var(--black);
+        --box-shadow: 0 0.5rem 1rem rgba(244, 196, 222, 0.4);
+      }
+
+      * {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        text-transform: capitalize;
+      }
+
+      html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+      }
+
+body {
+  background-color: var(--light-white);
+}
+
+      section {
+        padding: 5rem 10%;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--black);
+        margin-top: 1rem;
+        color: var(--white);
+        font-size: 1.7rem;
+        padding: 1rem 3rem;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--main-color);
+      }
+
+      .heading-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 6rem;
+        color: var(--black);
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--white);
+        box-shadow: var(--box-shadow);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 10%;
+      }
+
+      .header .logo {
+        font-size: 2.5rem;
+        color: var(--black);
+        font-weight: 600;
+      }
+
+      .navbar a {
+        margin-left: 2rem;
+        font-size: 1.7rem;
+        color: var(--black);
+        transition: 0.2s;
+      }
+
+      .navbar a:hover {
+        color: var(--main-color);
+      }
+
+      #menu-btn {
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: var(--black);
+        display: none;
+      }
+
+      .home-about {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .home-about .image {
+        flex: 1 1 41rem;
+      }
+
+      .home-about .image img {
+        width: 90%;
+        height: 90%;
+        
+      }
+
+      .home-about .content {
+        flex: 1 1 41rem;
+        padding: 3rem;
+        background: var(--light-bg);
+      }
+
+      .home-about .content h3 {
+        font-size: 3rem;
+        color: var(--black);
+      }
+
+      .home-about .content p {
+        font-size: 1.5rem;
+        padding: 1rem 0;
+        line-height: 2;
+        color: var(--black);
+      }
+
+      .services .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        gap: 1.5rem;
+      }
+
+      .services .box-container .box {
+        padding: 3rem 2rem;
+        text-align: center;
+        background: var(--main-color);
+        cursor: pointer;
+        border-radius: 3rem;
+      }
+
+      .services .box-container .box:hover {
+        background: var(--light-black);
+      }
+
+      .services .box-container .box img {
+        height: 7rem;
+        width: 7rem;
+       
+      }
+
+      .services .box-container .box img .quality{
+        height: 7rem;
+        width: 10rem;
+      }
+
+      .services .box-container .box h3 {
+        color: var(--white);
+        font-size: 1.7rem;
+        padding-top: 1rem;
+      }
+
+      .info-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        margin: 5rem 0;
+        flex-wrap: wrap;
+      }
+
+      .info-section.reverse {
+        flex-direction: row-reverse;
+      }
+
+      .info-section img {
+        width: 40%;
+        max-width: 400px;
+        border-radius: 1rem;
+        box-shadow: var(--box-shadow);
+      }
+
+      .info-content {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .info-content h3 {
+        font-size: 3rem;
+        color: var(--main-color);
+        margin-bottom: 1rem;
+      }
+
+      .info-content p {
+        font-size: 1.6rem;
+        color: var(--black);
+        line-height: 2.5rem;
+      }
+
+      .footer {
+        background-color: #232b37;
+      }
+
+      .footer .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 3rem;
+      }
+
+      .footer .box-container .box h3 {
+        color: var(--white);
+        font-size: 2.5rem;
+        padding-bottom: 2rem;
+      }
+
+      .footer .box-container .box a {
+        color: var(--light-white);
+        font-size: 1.5rem;
+        padding-bottom: 1.5rem;
+        display: block;
+      }
+
+      .footer .box-container .box a i {
+        color: var(--main-color);
+        padding-right: 0.5rem;
+        transition: 0.2s linear;
+      }
+
+      .footer .box-container .box a:hover i {
+        padding-right: 2rem;
+      }
+
+      .footer .credit {
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 3rem;
+        border-top: 0.1rem solid var(--light-white);
+        font-size: 2rem;
+        color: var(--white);
+      }
+
+      .footer .credit span {
+        color: var(--main-color);
+      }
+
+      @media (max-width: 768px) {
+        #menu-btn {
+          display: inline-block;
+        }
+
+        .header .navbar {
+          position: absolute;
+          top: 99%;
+          left: 0;
+          right: 0;
+          background-color: var(--white);
+          border-top: var(--border);
+          padding: 2rem;
+          display: none;
+          flex-direction: column;
+        }
+
+        .header .navbar.active {
+          display: flex;
+        }
+
+        .header .navbar a {
+          margin: 1rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="header">
+      <a href="#" class="logo">Velora</a>
+      <nav class="navbar">
+        <a href="#home">Home</a>
+      </nav>
+      <div id="menu-btn" class="fas fa-bars"></div>
+    </section>
+
+    <section class="home-about" id="home">
+      <div class="image">
+        <img src="assets/Velora.png" alt="QR Attendance" />
+      </div>
+      <div class="content">
+        <h3>Welcome to Velora</h3>
+        <p>
+          We sell the best rackets for the best badminton experience, especially for you. Each rackets were made with high quality materials, selling at a price of only RM159. Get yours now for the ultimate badminton experience.
+        </p>
+        <a href="#about" class="btn">Learn More</a>
+      </div>
+    </section>
+
+    <section class="services" id="features">
+      <h1 class="heading-title">Key Features</h1>
+      <div class="box-container">
+        <div class="box">
+          <img src="assets/high-quality.png" alt="" id="quality"/>
+          <h3>High Quality</h3>
+        </div>
+        <div class="box">
+          <img src="assets/recycle-icon.png" alt="" />
+          <h3>Recycled Materials</h3>
+        </div>
+        <div class="box">
+          <img src="assets/price-tag.png" alt="" />
+          <h3>The Best Price</h3>
+        </div>
+        <div class="box">
+          <img src="assets/easy-icon.png" alt="" />
+          <h3>User-Friendly</h3>
+        </div>
+        <div class="box">
+          <img src="assets/badminton.png" alt="" />
+          <h3>Customizeable Design</h3>
+        </div>
+        <div class="box">
+          <img src="assets/eco-friendly.png" alt="" />
+          <h3>Eco-Conscious Design</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h1 class="heading-title">About the Product</h1>
+
+      <div class="info-section">
+        <img src="assets/badminton racket.png" alt="QR Code Scan" />
+        <div class="info-content">
+          <h3>Our Badminton Rackets</h3>
+          <p>
+            Our rackets are designed with many patterns, colors and nets. Each made with high quality materials to boost player's skills and to gain better experience. Rackets are also customized to match player's preferences to make it comfortable and efficient to play with by improving grip and much more. Guaranteed for 2-3 years.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-section reverse">
+        <img src="data:image/jpeg;base64,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" alt="Benefits" />
+        <div class="info-content">
+          <h3>Why choose us?</h3>
+          <p>
+            Our service includes cuztomizeable selling and renting products, giving everyone a chance to play with full performance. With affordable price, people can now experience badminton as much as they wanted to. We help people make an interest out of sports and have them touch grass.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqtw6GMHbpyGznvYGOIbYCAN9rBqFisf0XzQ&s" alt="How it Works" />
+        <div class="info-content">
+          <h3>Benefits</h3>
+          <p>
+            1. Save up to RM 159 per racket<br />
+            2. Comfortable use<br />
+            3. Provides full experience<br />
+            4. Can be either bought or rented <br />
+            5. User-Friendly
+          </p>
+        </div>
+      </div>
+
+      <div class="info-section reverse">
+        <img src="assets/eco-icon.jpg" alt="Features" />
+        <div class="info-content">
+          <h3>Eco-friendly features</h3>
+          <p>
+            - Made using recycled materials<br />
+            - Affordable and sustainable<br />
+            - Easy to maintain and modify for future upgrades
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>quick links</h3>
+          <a href="#home"> <i class="fas fa-angle-right"></i> home</a>
+          <a href="#features"> <i class="fas fa-angle-right"></i> features</a>
+          <a href="#about"> <i class="fas fa-angle-right"></i> about</a>
+        </div>
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#"> <i class="fas fa-phone"></i> +60 11-6492-9779</a>
+          <a href="#"> <i class="fas fa-phone"></i> +60 17-308-4198</a>
+        </div>
+        <div class="box">
+          <h3>email us</h3>
+          <a href="#"> <i class="fas fa-envelope"></i> arissasofia1405@gmail.com</a>
+          <a href="#"> <i class="fas fa-envelope"></i> qasehazalea@gmail.com</a>
+        </div>
+        <div class="box">
+          <h3>follow us</h3>
+          <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="#"> <i class="fab fa-tiktok"></i> tiktok </a>
+        </div>
+      </div>
+      <div class="credit">
+        created by <span>Velora</span> | all right reserved
+      </div>
+    </section>
+
+    <script>
+      let menu = document.querySelector("#menu-btn");
+      let navbar = document.querySelector(".header .navbar");
+
+      menu.onclick = () => {
+        navbar.classList.toggle("active");
+      };
+
+      window.onscroll = () => {
+        navbar.classList.remove("active");
+      };
+    </script>
+  </body>
+</html>
